@@ -1,8 +1,26 @@
-<h1>Details de la tâche</h1>
+<div class="container mt-5">
 
-Titre : <%= @task.title %>
-Détails : <%= @task.details %>
-Statut : <%= @task.completed ? 'Terminée' : 'En cours' %>
+  <h1 class="mb-4">Détails de la tâche</h1>
 
-<p><%= link_to 'Retour à la liste', tasks_path %></p>
-<p><%= link_to 'Mettre à jour', edit_task_path(@task) %>
+
+  <ul class="list-group">
+    <li class="list-group-item">
+      <strong>Titre :</strong> <%= @task.title %>
+    </li>
+    <li class="list-group-item">
+      <strong>Détails :</strong> <%= @task.details %>
+    </li>
+    <li class="list-group-item">
+      <strong>Statut :</strong>
+      <span class="badge bg-<%= @task.completed ? 'success' : 'warning' %>">
+        <%= @task.completed ? 'Terminée' : 'En cours' %>
+      </span>
+    </li>
+  </ul>
+
+
+  <div class="mt-4">
+    <%= link_to 'Retour à la liste', tasks_path, class: "btn btn-secondary me-2" %>
+    <%= link_to 'Mettre à jour', edit_task_path(@task), class: "btn btn-primary" %>
+  </div>
+</div>

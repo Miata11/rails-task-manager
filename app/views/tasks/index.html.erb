@@ -1,15 +1,38 @@
-<h1>Liste des tâches</h1>
+<div class="container mt-5">
+  <!-- Titre principal -->
+  <h1 class="mb-4">Liste des tâches</h1>
 
-<ul>
-<% @tasks.each do |task| %>
-<li>
-  <%= link_to task.title, task_path(task) %>
-  <%= task.details %>
-  Statut : <%= task.completed ? 'terminée' : 'en cours' %>
-  <%= link_to 'Modifier', edit_task_path(task) %>
-  <%= link_to "Supprimer", delete_task_path(task), data: { turbo_method: :delete, turbo_confirm: 'Êtes-vous sûr de vouloir supprimer cette tâche ?' }  %>
-</li>
-<% end %>
-</ul>
+  <ul class="list-group">
+    <% @tasks.each do |task| %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
 
-<p><%= link_to 'Créer une tache', tasks_new_path %></p>
+        <div>
+          <%= link_to task.title, task_path(task), class: "text-decoration-none text-primary fw-bold" %><br>
+          <small class="text-muted"><%= task.details %></small>
+        </div>
+
+
+        <div>
+
+          <span class="badge bg-<%= task.completed ? 'success' : 'warning' %> me-2">
+            <%= task.completed ? 'Terminée' : 'En cours' %>
+          </span>
+
+
+          <%= link_to edit_task_path(task), class: "btn btn-sm btn-outline-primary me-2" do %>
+            <i class="fa-solid fa-pencil"></i> Modifier
+          <% end %>
+
+          <%= link_to delete_task_path(task), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer cette tâche ?' }, class: "btn btn-sm btn-outline-danger" do %>
+            <i class="fa-solid fa-trash"></i> Supprimer
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+
+  <p class="mt-4">
+    <%= link_to 'Créer une tâche', tasks_new_path, class: "btn btn-primary" %>
+  </p>
+</div>
