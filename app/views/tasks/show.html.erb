@@ -1,0 +1,8 @@
+<h1>Details de la tâche</h1>
+
+Titre : <%= @task.title %>
+Détails : <%= @task.details %>
+Statut : <%= @task.completed ? 'Terminée' : 'En cours' %>
+
+<p><%= link_to 'Retour à la liste', tasks_path %></p>
+<p><%= link_to 'Mettre à jour', edit_task_path(@task) %>

@@ -1,0 +1,24 @@
+<h1>Modifier une tache</h1>
+
+<%= form_with model: @task do |f| %>
+<div>
+  <%= f.label :title, "Titre" %>
+  <%= f.text_field :title, class: "input" %>
+</div>
+
+<div>
+  <%= f.label :details, "Détails" %>
+  <%= f.text_field :details %>
+</div>
+
+<div>
+  <%= f.label :completed, "Terminée ?" %>
+  <%= f.check_box :completed %>
+</div>
+
+<div>
+  <%= f.submit %>
+</div>
+<% end %>
+
+<%= link_to 'Retour à la tâche', task_path(@task) %>

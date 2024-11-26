@@ -1,0 +1,22 @@
+<h1>Créer une nouvelle tâche</h1>
+
+<%= form_with model: @task do |f| %>
+<div>
+  <%= f.label :title, "Titre" %>
+  <%= f.text_field :title, class: "input" %>
+</div>
+
+<div>
+  <%= f.label :details, "Détails" %>
+  <%= f.text_field :details %>
+</div>
+
+<div>
+  <%= f.label :completed, "Terminée ?" %>
+  <%= f.check_box :completed %>
+</div>
+
+<div>
+  <%= f.submit "Créer" %>
+</div>
+<% end %>
